@@ -36,6 +36,10 @@ dependencies:
 build: dependencies
 	CGO_ENABLED=0 GOOS=linux GO111MODULE=on go build
 
+# Build the driver locally
+build-win: dependencies
+	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 GO111MODULE=on go build	
+
 # Generates the docker container (but does not push)
 docker: dependencies
 	make -f docker.mk build-base-image docker
